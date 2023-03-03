@@ -1,0 +1,77 @@
+<div class="mian">
+
+    <div class="container">
+        <p-card [header]="editMode?'Edit Product':'Add New Product'" subheader="list of new products">
+            <div class="p-grid mb-5">
+                <div class="p-col-12">
+                    <p-toolbar>
+                        <div class="p-toolbar-group-start"></div>
+                        <div class="p-toolbar-group-end">
+                            <p-button [label]="editMode?'Update':'Create'" icon="pi pi-plus"
+                                styleClass="p-button-success mx-2" (onClick)="onSubmit()"></p-button>
+                            <p-button label="Cancel" icon="pi pi-minus" styleClass="p-button-secondary"
+                                (click)="onCancel()" routerLink="/products"></p-button>
+                        </div>
+
+
+                    </p-toolbar>
+                </div>
+            </div>
+
+
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <form [formGroup]="form">
+                        <div class="p-fluid p-formgrid p-grid">
+                            <div class="p-field p-col">
+                                <label for="title">title</label>
+                                <input formControlName="title" id="name" type="text" pInputText />
+                                <small *ngIf="productForm['title'].invalid&& isSubmitted" class="p-error">Title is
+                                    required</small>
+                            </div>
+
+                            <div class="p-field p-col">
+                                <label for="icon">Category</label>
+                                <div class="div">
+
+                                    <p-dropdown [options]="categories" formControlName="category"
+                                        optionLabel="name" optionValue="id"></p-dropdown>
+                                </div>
+
+                            </div>
+                            <div class="p-field p-col">
+                                <label for="quantity">Quantity</label>
+                                <p-inputNumber formControlName="quantity"></p-inputNumber>
+                                <small *ngIf="productForm['quantity'].invalid&& isSubmitted" class="p-error">Quantity is
+                                    required</small>
+                            </div>
+                            <div class="p-field p-col">
+                                <label for="price">Price</label>
+                                <p-inputNumber formControlName="price"></p-inputNumber>
+                                <small *ngIf="productForm['price'].invalid&& isSubmitted" class="p-error">Price is
+                                    required</small>
+                            </div>
+                            <div class="p-field p-col">
+                                <label for="desc">Description</label>
+                                <textarea pInputTextarea formControlName="description"></textarea>
+                            </div>
+                            <div class="p-field p-col">
+                                <label for="image">Image</label>
+                                <input type="file" class="p-inputtext" accept="image"
+                                    (change)="fileUpload($event)">
+                            </div>
+
+                            <div>
+                                <img [src]="imgDisplay" alt="">
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </p-card>
+
+    </div>
+
+</div>

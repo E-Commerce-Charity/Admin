@@ -1,0 +1,11 @@
+.d-item {
+  display: flex;
+  text-align: center;
+}
+
+.d-order{
+  background: hsla(333, 100%, 53%, 1);
+
+}
+
+
