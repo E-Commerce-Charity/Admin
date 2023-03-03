@@ -34,7 +34,7 @@ import { TagModule } from 'primeng/tag';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
-import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { OrdersDetailComponent } from './components/order-details/order-details.component';
 
 const UXmodules = [
   CardModule,
@@ -60,7 +60,7 @@ const UXmodules = [
     ProductListComponent,
     ProductFormComponent,
     OrdersListComponent,
-    OrderDetailsComponent,
+    OrdersDetailComponent,
   ],
   imports: [
     BrowserModule,

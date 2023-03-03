@@ -1,15 +1,50 @@
 <div class="container">
-   <p-card header="Dashboard">
-    <div class="p-grid">
-        <div class="p-col-3">
-            <p-card styleClass="d-order">
-                <div class="d-item">
-                    <i class="pi pi-shopping-cart"></i>
-                    <span>Orders</span>
-                    <span>25</span>
-                </div>
-            </p-card>
+    <p-card header="Dashboard" subheader="Latest Updates">
+      <div class="grid">
+        <div class="col-3">
+          <p-card styleClass="d-orders">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-shopping-cart"></i><br />
+                <span class="name">Orders</span>
+              </div>
+              <span class="number">25</span>
+            </div>
+          </p-card>
         </div>
-    </div>
-   </p-card>
-</div>
+        <div class="col-3">
+          <p-card styleClass="d-products">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-briefcase"></i><br />
+                <span class="name">Products</span>
+              </div>
+              <span class="number"></span>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-3">
+          <p-card styleClass="d-users">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-users"></i><br />
+                <span class="name">Users</span>
+              </div>
+              <span class="number"></span>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-3">
+          <p-card styleClass="d-totalsales">
+            <div class="d-item">
+              <div>
+                <i class="pi pi-dollar"></i><br />
+                <span class="name">TotalSales</span>
+              </div>
+              <span class="number"></span>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </p-card>
+  </div>

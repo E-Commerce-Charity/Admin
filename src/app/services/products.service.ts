@@ -15,10 +15,12 @@ export class ProductsService {
   });
   header = new HttpHeaders().set("Authorization", "Bearer " + this.auth_token);
   type = new HttpHeaders().set("Content-Type", "multipart/form-data");
+
+
   httpOptions = {
     headers: this.header,
-    type :this.type
   };
+
   baseUrl = 'http://localhost:3000/products/'
   constructor(private http: HttpClient) {}
   params = new HttpParams()
@@ -31,14 +33,18 @@ export class ProductsService {
       params: this.params,
     });
   }
+
+
   getOneProduct(productId :any):Observable<Product> {
     return this.http.get<Product>(this.baseUrl+`${productId}`, {
       params: this.params,
     });
   }
 
-  createProduct(product :any): Observable<Product>{
-   return this.http.post<Product>(this.baseUrl, product ,this.httpOptions)
+
+
+  createProduct(product :any){
+   return this.http.post(this.baseUrl, product ,this.httpOptions)
   }
 
 

@@ -14,7 +14,7 @@ export class OrderService {
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDAxYjgxNTg3ZDc3NDNhNDA1MzJhNmQiLCJpYXQiOjE2Nzc4MzQyNjF9.hmQeUS8yp7XO2H_xICsbnTun8M037L2soR4bhoectfY';
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${this.auth_token}`,
+    "Authorization": `Bearer ${this.auth_token}`,
   });
   header = new HttpHeaders().set("Authorization", "Bearer " + this.auth_token);
   type = new HttpHeaders().set("Content-Type", "multipart/form-data");
@@ -26,16 +26,13 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   getOrders() {
-     this.http.get(this.baseUrl,this.httpOptions);
+     this.http.get(this.baseUrl);
   }
 
   getOrder(orderId: string): Observable<Order> {
     return this.http.get<Order>(`${this.baseUrl}/${orderId}`);
   }
 
-  createOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>(this.baseUrl, order);
-  }
 
 
 

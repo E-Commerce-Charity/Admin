@@ -1,1 +1,19 @@
-<p>order-details works!</p>
+<div class="admin-page" *ngIf="order">
+    <p-card [header]="'View Order'" subheader="You can edit order status here">
+        <div class="p-grid">
+          <div class="p-col-4">
+            <h5>Order Id</h5>
+            <p>{{ order.id }}</p>
+          </div>
+  
+          <div class="p-col-4">
+            <h5>Order Date</h5>
+            <p>{{ order.dateOrdered | date: 'short' }}</p>
+          </div>
+  
+          <div class="p-col-4">
+            <h5>Order Total Price</h5>
+            <p>{{ order.totalPrice | currency }}</p>
+          </div>
+        </div>
+    </p-card>

@@ -1,10 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Order } from 'src/app/models/Orders';
+import { OrderService } from 'src/app/services/order.service';
+
+
 
 @Component({
-  selector: 'app-order-details',
+  selector: 'app-orders-detail',
   templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+  styles: []
 })
-export class OrderDetailsComponent {
+export class OrdersDetailComponent implements OnInit {
+  order!: Order;
+  orderStatuses = [];
+  selectedStatus: any;
 
+  constructor(
+    private orderService: OrderService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this._getOrder();
+  }
+
+
+
+  private _getOrder() {
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
+        this.orderService.getOrder(params['id']).subscribe((order) => {
+          this.order = order;
+        });
+      }
+    });
+  }
 }

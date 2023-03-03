@@ -3,8 +3,9 @@
   text-align: center;
 }
 
-.d-order{
-  background: hsla(333, 100%, 53%, 1);
+p-card.order{
+  background-color: aquamarine;
+  
 
 }
 

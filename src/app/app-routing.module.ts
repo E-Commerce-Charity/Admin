@@ -6,8 +6,8 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { ProductPageComponent } from './components/product-page/product-page.component';
 
 const routes: Routes = [
-  { path: 'home', component: DashboardComponent },
   { path: '', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
   { path: 'products', component: ProductPageComponent },
   { path: 'products/form', component: ProductFormComponent },
   { path: 'products/form/:id', component: ProductFormComponent },

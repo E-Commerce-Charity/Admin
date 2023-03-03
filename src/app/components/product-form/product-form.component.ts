@@ -31,18 +31,17 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
-      imageCover: [null],
-      category: ['', [Validators.required]],
+      // imageCover: [null],
+      category: ["", [Validators.required]],
       quantity: ['', Validators.required],
       price: ['', Validators.required],
       description: ['', Validators.required],
+      images:[null]
     });
     this.categories = [
       {
-        id: 1,
+        id: "6401e26181e76284cc52b90b",
         name: 'Ramadan bags',
-        imgUrl:
-          'https://content.almalnews.com/wp-content/uploads/2023/02/%D9%83%D8%B1%D8%AA%D9%88%D9%86%D8%A9-%D8%B1%D9%85%D8%B6%D8%A7%D9%86.jpg',
       },
     ];
   }
@@ -50,25 +49,24 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {
     this.categories = [
       {
-        id: 1,
+        id: "6401e26181e76284cc52b90b",
         name: 'Ramadan bags',
-        imgUrl:
-          'https://content.almalnews.com/wp-content/uploads/2023/02/%D9%83%D8%B1%D8%AA%D9%88%D9%86%D8%A9-%D8%B1%D9%85%D8%B6%D8%A7%D9%86.jpg',
+      
       },
       {
-        id: 2,
+        id: "6401e2a581e76284cc52b90d",
         name: 'Monthly bags',
-        imgUrl:
-          'https://content.almalnews.com/wp-content/uploads/2023/02/%D9%83%D8%B1%D8%AA%D9%88%D9%86%D8%A9-%D8%B1%D9%85%D8%B6%D8%A7%D9%86.jpg',
+      
       },
       {
-        id: 3,
+        id: "6401e2c281e76284cc52b90f",
         name: 'meals',
-        imgUrl:
-          'https://content.almalnews.com/wp-content/uploads/2023/02/%D9%83%D8%B1%D8%AA%D9%88%D9%86%D8%A9-%D8%B1%D9%85%D8%B6%D8%A7%D9%86.jpg',
+      
       },
     ];
     this.checkEditMode();
+
+    
   }
 
   onSubmit() {
@@ -76,7 +74,9 @@ export class ProductFormComponent implements OnInit {
     const productFormData = new FormData();
 
     productFormData.append('title', this.productForm['title'].value);
-    productFormData.append('imageCover', this.productForm['imageCover'].value);
+    // productFormData.append('images', this.productForm['images'].value);
+    // productFormData.append('imageCover', this.productForm['imageCover'].value);
+    productFormData.append('category', this.productForm['category'].value);
     productFormData.append('price', this.productForm['price'].value);
     productFormData.append('quantity', this.productForm['quantity'].value);
     productFormData.append(
@@ -93,13 +93,11 @@ export class ProductFormComponent implements OnInit {
 
   addProduct(productData: FormData) {
     console.log('we are sending data to back');
-    // this.http.post('http://localhost:3000/products/',productData)
+    
 
-    this.productsService.createProduct(productData).subscribe((product: Product )=>{
-      this.products.push(product)
-      console.log(product)
+    this.productsService.createProduct(productData).subscribe((res :any)=>{
+      console.log(res)
     })
-    console.log(productData);
   }
 
   onCancel() {
@@ -152,7 +150,7 @@ export class ProductFormComponent implements OnInit {
       return;
     } else {
       this.form.patchValue({ image: file });
-      this.form.get('imageCover')?.updateValueAndValidity();
+      this.form.get('images')?.updateValueAndValidity();
       const filReader = new FileReader();
       filReader.onload = () => {
         this.imgDisplay = filReader.result;
@@ -164,7 +162,6 @@ export class ProductFormComponent implements OnInit {
 }
 
 interface Category {
-  id: number;
+  id: string;
   name: string;
-  imgUrl: string;
 }
