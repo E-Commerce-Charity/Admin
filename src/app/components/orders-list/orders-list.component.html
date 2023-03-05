@@ -1,27 +1,48 @@
-<p-card header="Orders" subheader="List of all orders">
-    <div class="p-grid">
-      <div class="p-col-12">
-        <p-table [value]="orders" styleClass="p-datatable-gridlines">
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="name">User <p-sortIcon field="user"></p-sortIcon></th>
-              <th pSortableColumn="totalPrice">
-                Total Price <p-sortIcon field="totalPrice"></p-sortIcon>
-              </th>
-              <th pSortableColumn="dateOrdered">
-                Date Ordered <p-sortIcon field="dateOrdered"></p-sortIcon>
-              </th>
+<!-- <p-card header="Orders" subheader="List of all orders">
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="orders" styleClass="p-datatable-gridlines">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">User <p-sortIcon field="user"></p-sortIcon></th>
+            <th pSortableColumn="totalPrice">
+              Total Price <p-sortIcon field="totalPrice"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateOrdered">
+              Date Ordered <p-sortIcon field="dateOrdered"></p-sortIcon>
+            </th>
 
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-order>
-            <tr>
-              <td>{{order.title}}</td>
-              <td>{{ order.totalPrice }}</td>
-              <td>{{ order.dateOrdered | date: 'short' }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </div>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+          <tr *ngFor="let order of orders">
+            <td>{{order.user.name}}</td>
+            <td>{{ order.totalPrice }}</td>
+            <td>{{ order.createdAt | date: 'short' }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
-  </p-card>
+  </div>
+</p-card> -->
+
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <td>User Name</td>
+      <td>Total Price</td>
+      <td>Date</td>
+      <td>payment Method</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{order.user.name}}</td>
+      <td>{{ order.totalOredrPrice }}</td>
+      <td>{{ order.createdAt | date: 'short' }}</td>
+      <td>{{order.paymentMethodType}}</td>
+    </tr>
+  </tbody>
+</table>

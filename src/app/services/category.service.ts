@@ -3,12 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/Category';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriesService {
-  apiURLCategories = "http://localhost:3000/" + 'categories';
+  apiURLCategories = 'http://localhost:3000/' + 'category';
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +24,10 @@ export class CategoriesService {
   }
 
   updateCategory(category: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.apiURLCategories}/${category.id}`, category);
+    return this.http.put<Category>(
+      `${this.apiURLCategories}/${category.id}`,
+      category
+    );
   }
 
   deleteCategory(categoryId: string): Observable<any> {
