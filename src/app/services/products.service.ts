@@ -13,20 +13,16 @@ export class ProductsService {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.auth_token}`,
   });
-  header = new HttpHeaders().set("Authorization", "Bearer " + this.auth_token);
-  type = new HttpHeaders().set("Content-Type", "multipart/form-data");
-
+  header = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth_token);
+  type = new HttpHeaders().set('Content-Type', 'multipart/form-data');
 
   httpOptions = {
     headers: this.header,
   };
 
-  baseUrl = 'http://localhost:3000/products/'
+  baseUrl = 'http://localhost:3000/products/';
   constructor(private http: HttpClient) {}
-  params = new HttpParams()
-    // .set('sort', "description")
-    .set('page', '1')
-    .set('limit', '6');
+  params = new HttpParams().set('page', '1').set('limit', '100');
 
   getProduct() {
     return this.http.get(this.baseUrl, {
@@ -34,25 +30,33 @@ export class ProductsService {
     });
   }
 
-
-  getOneProduct(productId :any):Observable<Product> {
-    return this.http.get<Product>(this.baseUrl+`${productId}`, {
+  getOneProduct(productId: any): Observable<Product> {
+    return this.http.get<Product>(this.baseUrl + `${productId}`, {
       params: this.params,
     });
   }
 
-
-
-  createProduct(product :any){
-   return this.http.post(this.baseUrl, product ,this.httpOptions)
+  createProduct(product: any) {
+    return this.http.post(this.baseUrl, product, this.httpOptions);
   }
-
 
   // updateProduct (productId :any){
   //   this.http.post
   // }
 
-  deleteProduct(productId:any){
-    this.http.delete(`http://localhost:3000/products/${productId}`,productId)
+  deleteProduct(productId: any) {
+    this.http.delete(`http://localhost:3000/products/${productId}`, productId);
+  }
+
+  getProductByCategory(total: any, category: any) {
+    return this.http.get('http://localhost:3000/products/', {
+      // params: this.params,
+      params: new HttpParams()
+        .set('page', '1')
+        .set('limit', total)
+        .set('category', category),
+
+      // params: new HttpParams().set('page', '1').set('limit', '6'),
+    });
   }
 }

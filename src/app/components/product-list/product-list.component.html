@@ -1,54 +1,91 @@
+<!-- <div class="container bg-success">
+  <p-card header="Products" subheader="list of products">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button label="New" icon="pi pi-plus" styleClass="p-button-success" routerLink="form"></p-button>
+          </div>
 
-<div class="container">
-    <p-card header="Products" subheader="list of products">
-        <div class="p-grid">
-            <div class="p-col-12">
-                <p-toolbar>
-                    <div class="p-toolbar-group-left">
-                        <p-button label="New" icon="pi pi-plus" styleClass="p-button-success" routerLink="form"></p-button>
-                    </div>
-    
-                </p-toolbar>
-            </div>
-        </div>
-        <div class="p-grid">
-            <div class="p-col-12">
-                <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th>Product ID</th>
-                            <th pSortableColumn="title">Title</th>
-                            <th pSortableColumn="category">Category</th>
-                            <th pSortableColumn="quantity">Quantity</th>
-                            <th pSortableColumn="price">Price</th>
-                            <th pSortableColumn="sold">Sold</th>
-                            <th></th>
-                           
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-product>
-                  
-                        <tr>
-                            <td>{{product._id}}</td>
-                            <td>{{product.title}}</td>
-                            <td>{{product.category}}</td>
-                            <td>{{product.quantity}}</td>
-                            <td>{{product.price}}</td>
-                            <td>{{product.sold}}</td>
-                            <td>
-                                <p-button styleClass="p-button-danger p-2 mx-2" icon="pi pi-trash"  (click)="deleteProduct(product.id)"></p-button>
-                                <!-- <p-button 
-                                styleClass="p-button-secondary p-2" 
-                                icon="pi pi-pencil"
-                                (click)="editProduct(product.id)"
-                                ></p-button> -->
-                            </td>
-                        
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-        </div>
-    </p-card>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Product ID</th>
+              <th pSortableColumn="title">Title</th>
+              <th pSortableColumn="category">Category</th>
+              <th pSortableColumn="quantity">Quantity</th>
+              <th pSortableColumn="price">Price</th>
+              <th pSortableColumn="sold">Sold</th>
+              <th></th>
 
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product let-index>
+
+            <tr>
+              <td>{{product._id}}</td>
+              <td>{{product.title}}</td>
+              <td>{{category}}</td>
+              <td>{{product.quantity}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.sold}}</td>
+              <td>
+                <p-button styleClass="p-button-danger p-2 mx-2" icon="pi pi-trash"
+                  (click)="deleteProduct(product.id)"></p-button>
+              </td>
+
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+
+</div> -->
+
+<div class="input-group mb-3">
+  <button class="p-1 bg-success text-white rounded w-100 d-flex">
+    <div class="input-group-prepend p-4">
+      <label class="input-group-text" for="inputGroupSelect01">Category</label>
+    </div>
+    <select #categories class="custom-select w-75 p-4" id="inputGroupSelect01" (change)="onSelected(categories.value)">
+      <option value="null" selected>All Categories</option>
+      <option value="6401ffcb4c39040f50277f24">Ramadan Bags</option>
+      <option value="6401ffe34c39040f50277f26">Monthly Bags</option>
+      <option value="6401fe2c4c39040f50277f22">Meals</option>
+    </select>
+  </button>
 </div>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th>Product ID</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products, let index=index">
+      <td>{{product._id}}</td>
+      <td>{{product.title}}</td>
+      <td>{{categoryName[index]}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.sold}}</td>
+      <td>
+        <p-button styleClass="p-button-danger p-2 mx-2" icon="pi pi-trash"
+          (click)="deleteProduct(product._id)"></p-button>
+      </td>
+  </tbody>
+</table>
