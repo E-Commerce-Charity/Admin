@@ -38,8 +38,15 @@ ul li a{
    
 }
 ul li:hover{
-  
-    color: white;
-    background: #444444;
+    /* rgba(17, 153, 136, 0.467) */
+    /* color: #198754 ; */
+    background: white;
+}
+
+ul li a:hover{
+    /* rgba(17, 153, 136, 0.467) */
+    color: #198754 ;
+    font-weight:bold ;
+    background: white;
 }
 
